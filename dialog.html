@@ -4,23 +4,48 @@
 	<meta charset="UTF-8">
 	<title>對話框</title>
 	<style type = "text/css">
+		body{
+			text-align: center;
+			font-family: "微軟正黑體",arial;
+		}
+
 		.dialog{
 			position: fixed;
 			top: 100px;
 			left: 50%;
 			transform: translate(-100px, 0px);
 			width: 200px;
-			padding: 10px;
 			border: 1px solid #888888;
 			background-color: #eeeeee;
 			box-shadow: 0px 0px 10px #000000;
 			display: none;
 		}
-		.dialog>.close{
-			position: absolute;
-			top: 2px;
-			right: 3px;
+
+		.dialog-mask{
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			opacity: 0.5;
+			background-color: #000000;
+		}
+
+		.dialog>.head{
+			background-color: #444444;
+			color: #ffffff;
+			padding: 10px;
+			font-weight: bold;
+		}
+
+		.dialog>.head>.close{
+			float: right;
 			cursor: pointer; 
+		}
+
+		.dialog>.content{
+			padding: 10px;
+			background-color: #ffffff;
 		}
 	</style>
 	<script>
@@ -39,9 +64,17 @@
 <body>
 	<button onclick="showDialog();">Contact Me</button>
 	<div id = "dialog" class="dialog">
-		<div onclick = "closeDialog();" class="close">X</div>
-		About Me<br/>
-		Email: andychiu023@gmail.com
+		<div class="head">
+			My Contact Info
+			<div onclick = "closeDialog();" class="close">X</div>
+		</div>
+		<div class="content">
+			About Me<br/>
+			Email: andychiu923@gmail.com
+		</div>
+	</div>
+	<div id="dialog-mask" class="dialog-mask">
+		
 	</div>
 </body>
 </html>
