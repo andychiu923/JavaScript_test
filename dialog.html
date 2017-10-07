@@ -13,12 +13,14 @@
 			position: fixed;
 			top: 100px;
 			left: 50%;
-			transform: translate(-100px, 0px);
-			width: 200px;
+			transform: translate(-150px, 0px);
+			width: 300px;
 			border: 1px solid #888888;
 			background-color: #eeeeee;
 			box-shadow: 0px 0px 10px #000000;
 			display: none;
+			z-index: 2;
+			transition: opacity 0.5s;
 		}
 
 		.dialog-mask{
@@ -29,6 +31,8 @@
 			height: 100%;
 			opacity: 0.5;
 			background-color: #000000;
+			display: none;
+			z-index: 1;
 		}
 
 		.dialog>.head{
@@ -36,6 +40,7 @@
 			color: #ffffff;
 			padding: 10px;
 			font-weight: bold;
+			cursor: move;
 		}
 
 		.dialog>.head>.close{
@@ -50,21 +55,60 @@
 	</style>
 	<script>
 		var dialog;
-		window.onload = function () {
+		var dialogMask;
+
+		window.onload = function () {		// on load
 			dialog = document.getElementById("dialog");
+			dialogMask = document.getElementById("dialog-mask");
+			var head = document.getElementById("dialog-head");		// add eventlistener
+			head.addEventListener("mousedown", dragDialog);
 		}
+
+		function dragDialog(e)
+		{
+			//alert(e.clientX + " " + e.clientY);
+			// get mouse position and calculate diff
+			var differX = e.clientX - dialog.offsetLeft;
+			var differY = e.clientY - dialog.offsetTop;
+			//alert(differX + " " + differY);
+
+			var move = function(e)			// when mouse is moving int the screen
+			{
+				//document.title = e.clientX + " , " + e.clientY;
+				dialog.style.left = (e.clientX - differX)+ "px";
+				dialog.style.top = (e.clientY - differY)+ "px";
+			};
+
+			var end = function(e)			// when user release mouse button
+			{
+				// when the drag is over, remove eventlistener
+				document.removeEventListener("mousemove", move);
+				document.removeEventListener("mouseup", end);
+			};
+			// add eventlistener for mousemove and mouseup
+			document.addEventListener("mousemove", move);
+			document.addEventListener("mouseup", end);
+		}
+
 		function showDialog(){
+			dialog.style.opacity = 0;
 			dialog.style.display = "block";
+			dialogMask.style.display = "block";
+			window.setTimeout(function(){
+				dialog.style.opacity = 1;
+			},10);
 		}
+
 		function closeDialog() {
 			dialog.style.display = "none";
+			dialogMask.style.display = "none";
 		}
 	</script>
 </head>
 <body>
 	<button onclick="showDialog();">Contact Me</button>
 	<div id = "dialog" class="dialog">
-		<div class="head">
+		<div id = "dialog-head" class="head">
 			My Contact Info
 			<div onclick = "closeDialog();" class="close">X</div>
 		</div>
@@ -73,7 +117,7 @@
 			Email: andychiu923@gmail.com
 		</div>
 	</div>
-	<div id="dialog-mask" class="dialog-mask">
+	<div id="dialog-mask" class="dialog-mask" onclick = "closeDialog();">
 		
 	</div>
 </body>
