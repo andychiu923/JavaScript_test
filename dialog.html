@@ -19,6 +19,7 @@
 			background-color: #eeeeee;
 			box-shadow: 0px 0px 10px #000000;
 			display: none;
+			border-radius: 10px;
 			z-index: 2;
 			transition: opacity 0.5s;
 		}
@@ -40,6 +41,8 @@
 			color: #ffffff;
 			padding: 10px;
 			font-weight: bold;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
 			cursor: move;
 		}
 
@@ -51,6 +54,8 @@
 		.dialog>.content{
 			padding: 10px;
 			background-color: #ffffff;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
 		}
 	</style>
 	<script>
@@ -110,7 +115,8 @@
 </head>
 <body>
 	<button onclick="showDialog();">Contact Me</button>
-	<div id = "dialog" class="dialog">
+	<div class="frame">
+		<div id = "dialog" class="dialog">
 		<div id = "dialog-head" class="head">
 			My Contact Info
 			<div onclick = "closeDialog();" class="close">X</div>
@@ -118,11 +124,10 @@
 		<div class="content">
 			About Me<br/>
 			Email: andychiu923@gmail.com<br/>
-			Address: ChungLi City, Taiwan
+			Address: ChungLi City,Taiwan
+		</div>
 		</div>
 	</div>
-	<div id="dialog-mask" class="dialog-mask" onclick = "closeDialog();">
-		
-	</div>
+	<div id="dialog-mask" class="dialog-mask" onclick = "closeDialog();"></div>
 </body>
 </html>
