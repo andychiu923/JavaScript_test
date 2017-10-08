@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Selector Test</title>
+	<style type = text/css>
+		.blue{
+			color: blue;
+		}
+
+		.red{
+			color: red;
+		}
+
+		.green{
+			color: green;
+		}
+	</style>
+	<script src = "jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('div p').addClass('blue');
+			$('div > p').addClass('red');
+			$('div + span').addClass('green');
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p>JavaScript</p>
+	</div>
+	<span><p>jQuery</p></span>
+	<span><p>Flash</p></span>
+	<div>
+		<p>ASP.NET</p>
+		<b><p>ASP</p></b>
+		<span><p>PHP</p></span>
+		<span><p>JSP</p></span>
+	</div>
+</body>
+</html>
