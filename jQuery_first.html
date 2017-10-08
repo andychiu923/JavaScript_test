@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My First jQuery</title>
+	<style type = "text/css">
+		.blue{
+			color: blue;
+		}
+
+		.red{
+			color: red;
+		}
+	</style>
+	<script src = "jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#list').addClass('red');
+			$('#list li:last').addClass('blue');
+		});
+	</script>
+</head>
+<body>
+	<h2>Build First jQuery</h2>
+	<ol id = "list">
+		<li>Java Applet</li>
+		<li>Javascript</li>
+		<li>VBScript</li>
+		<li>DHTML</li>
+	</ol>
+</body>
+</html>
