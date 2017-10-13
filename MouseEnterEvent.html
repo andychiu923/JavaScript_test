@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MouseEnter Event</title>
+	<style type = "text/css">
+		.yellow {
+			background-color: yellow;
+		}
+	</style>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('p').mouseenter(function() {
+				$(this).addClass("yellow");
+			}).mouseleave(function() {
+				$(this).removeClass("yellow");
+			});
+		});
+	</script>
+</head>
+<body>
+	<p>jQuery Event Handle</p>
+</body>
+</html>
