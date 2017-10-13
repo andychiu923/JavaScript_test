@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ShowHideEffect</title>
+	<style type = "text/css"></style>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('p.more').hide();
+			$('a.short').hide();
+			$('a.more1').click(function() {
+				$('p.more').show();
+				$(this).hide();
+				$('a.more2').hide();
+				$('a.short').show();
+				return false;
+			});
+			$('a.more2').click(function() {
+				$('p.more').show('slow');
+				$(this).hide();
+				$('a.more1').hide();
+				$('a.short').show();
+				return false;
+			});
+			$('a.short').click(function() {
+				$('p.more').hide('500');
+				$('a').show();
+				$(this).hide();
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p>jQuery is a JavaScript Library</p>
+		<p class="more">jQuery was invented in 2006 by John Resig at BarCamp</p>
+		<a href="#" class="more1">more1</a>
+		<a href="#" class="more2">more2</a>
+		<a href="#" class="short">hide</a>
+	</div>
+</body>
+</html>

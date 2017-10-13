@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Toggle Test</title>
+	<script src = "jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var p = $('p.more');
+			p.hide();
+			$('a.more').click(function() {
+				p.toggle('slow');
+				if($(this).text() == '更多內容')
+					$(this).text('隱藏內容');
+				else
+					$(this).text('更多內容');
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p>jQuery is a JavaScript library</p>
+		<p class="more">jquery was invented in 2006 by John Resig at BarCamp</p>
+		<a href="#" class="more">更多內容</a>
+	</div>
+</body>
+</html>
