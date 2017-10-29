@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
+	<style type = "text/css">
+		#login {
+			width: 300px;
+		}
+
+		#open {
+			margin: 0;
+			cursor: pointer;
+			background: yellow;
+			color: black;
+			padding: 5px;
+		}
+		form {
+			display: none;
+			padding: 3px;
+			border: 1px solid black;
+		}
+	</style>
+	<script src = "jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#open').click(function() {
+				$('#login form').slideToggle('300');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="login">
+		<p id="open">Login</p>
+		<form>
+			<p>
+				Username:
+				<input type="text" id="username" />
+			</p>
+			<p>
+				Password:
+				<input type="text" id="password" />
+			</p>
+			<p>
+				<input type="submit" id="button" value = "Login" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>

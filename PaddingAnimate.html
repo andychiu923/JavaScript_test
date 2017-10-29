@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PaddingAnimte</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('p').animate({
+				padding: '20px'
+			}, 2000);
+			$('#navigation li').hover(
+				function() {
+					$(this).animate({paddingLeft: '+=10px'}, 200);
+				},
+				function() {
+					$(this).animate({paddingLeft: '-=10px'}, 200);
+				});
+		});
+	</script>
+</head>
+<body>
+	<div id="navigation">
+		<ul>
+			<li><a href="#">HomePage</a></li>
+			<li><a href="#">ClientWebTechnology</a></li>
+			<li><a href="#">ServerWebTechnology</a></li>
+			<li><a href="#">AboutMe</a></li>
+		</ul>
+	</div>
+	<p>jQuery is a JavaScipt function library.</p>
+	<p class="more">jQuery was invented in 2006 by John Resig at BarCamp.</p>
+</body>
+</html>

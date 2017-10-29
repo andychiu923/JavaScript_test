@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FadeIn&FadeOut</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('p.more').hide();
+			$('a.short').hide();
+			$('a.more').click(function() {
+				$('p.more').fadeIn('1500');
+				$(this).hide();
+				$('a.short').show();
+				return false;						// 停止超連結的預設行為
+			});
+			$('a.short').click(function() {
+				$('p.more').fadeOut('1500');
+				$('a.more').show();
+				$(this).hide();
+				return false;
+			});
+			$('a.toggle').click(function() {
+				$('p.more').fadeToggle('1500');
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p>jQuery is a JavaScript function library.</p>
+		<p class="more">jQuery was invented in 2006 by John Resig at BarCamp.</p>
+		<a href="#" class="more">More</a>
+		<a href="#" class="short">Hidden Info</a>
+		<a href="#" class="toggle">Switch</a>
+	</div>
+</body>
+</html>

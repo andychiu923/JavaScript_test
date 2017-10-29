@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MultiEffect</title>
+	<style type="text/css">
+		.msg {
+			border: 1px solid #333;
+			cursor: pointer;
+		}
+	</style>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.msg').click(function() {
+				$(this).hide().delay('1500')
+				.fadeIn('1500').delay('1500')
+				.fadeOut('1500').delay('1500')
+				.slideDown('10000').slideUp('10000')
+				.slideDown('10000').slideUp('10000')
+				.show('5000');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="msg">jQuery was invented in 2006 by John Resig at BarCamp. It's a JavaScript function library.</div>
+</body>
+</html>

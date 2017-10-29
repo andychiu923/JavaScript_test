@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Zoom</title>
+	<style type="text/css">
+	/* original 400*225*/
+	.image {
+		width: 240px;
+		height: 135px;
+		display: inline-block;
+		vertical-align: top;
+		background-image: url("laptop.jpg");
+		background-size: 100% 100%;
+		position: relative;
+	}	
+
+	.image>.viewport {
+		width: 50px;
+		height: 50px;
+		outline: 1px solid #000000;
+		background-color: #ffffff;
+		opacity: 0.5;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		visibility: hidden;
+	}
+
+	.info {
+		width: 300px;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.info>.zoom-image {
+		width: 300px;
+		height: 300px;
+		outline: 1px solid #000000;
+		position: absolute;
+		background-image: url("laptop.jpg");
+		background-size: 1440px 810px;
+		background-position: 0px 0px;
+		display: none;
+	}
+
+	</style>
+	<script>
+		var ratio = 6;
+		var image, viewport, zoomImage;
+		window.onload=function() {
+			image=document.getElementById("image");
+			viewport=document.getElementById("viewport");
+			zoomImage=document.getElementById("zoom-image");
+			image.addEventListener("mouseover", showImage);
+		};
+
+		function showImage(e) {
+			viewport.style.visibility="visible";
+			zoomImage.style.display="block";
+			var moveShow=function(e) {
+				var x = e.clientX - image.offsetLeft;
+				var y = e.clientY - image.offsetTop;
+				//console.log(e.clientX + "," + e.clientY);
+				var viewportX = x - viewport.offsetWidth/2;
+				var viewportY = y - viewport.offsetHeight/2;
+				if(viewportX < 0) {
+					viewportX = 0;
+				}
+				else if (viewportX+viewport.offsetWidth > image.offsetWidth) {
+					viewportX = image.offsetWidth - viewport.offsetWidth;
+				}
+
+				if(viewportY < 0) {
+					viewportY = 0;
+				}
+				else if (viewportY+viewport.offsetHeight > image.offsetHeight) {
+					viewportY = image.offsetHeight - viewport.offsetHeight;
+				}
+
+				viewport.style.left = viewportX+"px";
+				viewport.style.top = viewportY+"px";
+
+				var realX = viewportX*ratio;
+				var realY = viewportY*ratio;
+				zoomImage.style.backgroundPosition = "-" + realX + "px -" + realY + "px"; 
+			};
+
+			var endShow=function() {
+				viewport.style.visibility="hidden";
+				zoomImage.style.display="none";
+				image.removeEventListener("mousemove",moveShow);
+				image.removeEventListener("mouseout", endShow);
+			};
+
+			image.addEventListener("mousemove", moveShow);
+			image.addEventListener("mouseout", endShow);
+		};
+	</script>
+</head>
+<body>
+	<div id="image" class="image">
+		<div id="viewport" class="viewport"></div>
+	</div>
+	<div class="info">
+		<div id="zoom-image" class="zoom-image"></div>
+		<h3>超讚筆電</h3>
+		<div>效能強大，CP值高</div>
+		<div>特價49999台幣</div>
+	</div>
+</body>
+</html>

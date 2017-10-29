@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AnimateTest</title>
+	<style type="text/css">							
+		.more {									 
+			position: absolute;
+			--必須有position屬性才能移動					
+		}
+
+		.moveIt {
+			position: relative;
+			border: 1px solid #333;
+			cursor: pointer;
+		}
+	</style>	
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('p').animate({
+				left: '200px',
+				fontSize: '20px',
+				opacity: .5
+			}, 2000);
+			$('div').click(function() {
+				$(this).animate({
+					left: '+=50px'
+				}, 1000);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="moveIt">Click me</div>
+	<p>jQuery is a JavaScript function library.</p>
+	<p class="more">jQuery was invented in 2006 by John Resig at BarCamp.</p>
+</body>
+</html>

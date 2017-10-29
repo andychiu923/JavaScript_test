@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HoverDelayTest</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.more').hide();
+			$('.tip').hover(
+				function() {
+					$('.more').fadeIn('800');
+				},
+				function() {
+					$('.more').delay('500');
+					$('.more').fadeOut('800');
+				}
+			);
+		});
+	</script>
+</head>
+<body>
+	<p><a href="#" class = "tip">jQuery </a>is a JavaScript funciton library.</p>
+	<div class="more">jQuery was invented in 2006 by John Resig at BarCamp.</div>
+</body>
+</html>
